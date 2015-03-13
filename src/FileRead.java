@@ -1,5 +1,3 @@
-package edu.ucsb.cs56.S11.dpitkin.choice3;
-
 import java.awt.*;
 import javax.swing.*;
 import java.io.*;
@@ -8,16 +6,16 @@ import java.util.*;
 import java.net.*;
 
 /**A File Reader.
- *@author Dane Pitkin
- *@version Mantis Ticket 0000273, CS56, S11, choice points 3.
- *
- *Reads from a .txt file line by line and
- *creates an <code>ArrayList<String></code> list where 
- *each index contains one line of the file. 
- *
- *The method <code>readFromFile</code> taken from:
- *@link http://www.roseindia.net/java/beginners/java-read-file-line-by-line.shtml
- */
+ *  *@author Dane Pitkin
+ *   *@version Mantis Ticket 0000273, CS56, S11, choice points 3.
+ *    *
+ *     *Reads from a .txt file line by line and
+ *      *creates an <code>ArrayList<String></code> list where 
+ *       *each index contains one line of the file. 
+ *        *
+ *         *The method <code>readFromFile</code> taken from:
+ *          *@link http://www.roseindia.net/java/beginners/java-read-file-line-by-line.shtml
+ *           */
 
 
 public class FileRead 
@@ -29,7 +27,7 @@ public class FileRead
 
 
     /** Constructor
-     */
+ *      */
 
     public FileRead(){
 	this.filename = "/text/vocabulary.txt";
@@ -39,16 +37,16 @@ public class FileRead
 
 
     /** Get the list of words.
-     *@return list A list of type ArrayList<String>.
-     */
+ *      *@return list A list of type ArrayList<String>.
+ *           */
 
     public ArrayList<String> getList(){
 	return this.list;
     }
 	    
     /** Get the size of the list.
-     *@return list.size() Of type int.
-     */
+ *      *@return list.size() Of type int.
+ *           */
 
      public int getSizeOfArray(){
 	 return list.size();
@@ -56,9 +54,9 @@ public class FileRead
 
 
     /** Gets name of .txt file from the user. 
-     *At the moment, it's just hardcoded in.
-     *Not good programming syle.
-     */
+ *      *At the moment, it's just hardcoded in.
+ *           *Not good programming syle.
+ *                */
 
     public void getFileName(){
 
@@ -67,15 +65,15 @@ public class FileRead
     }
 
     /** Reads data from file and stores it in <code>list</code>.
-     *
-     *Each line in the .txt file is one index of <code>list</code>.
-     *If you want the list to be on word per index, you must only
-     *have one word per line.
-     *
-     *Code borrowed and modified from:
-     *@link http://www.rgagnon.com/javadetails/java-0077.html
-     *@exception Exception catch any exception reading from file
-     */
+ *      *
+ *           *Each line in the .txt file is one index of <code>list</code>.
+ *                *If you want the list to be on word per index, you must only
+ *                     *have one word per line.
+ *                          *
+ *                               *Code borrowed and modified from:
+ *                                    *@link http://www.rgagnon.com/javadetails/java-0077.html
+ *                                         *@exception Exception catch any exception reading from file
+ *                                              */
 
     public void readFromFile(){
 	InputStream is = null;

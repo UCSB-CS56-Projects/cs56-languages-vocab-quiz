@@ -1,16 +1,14 @@
-package edu.ucsb.cs56.S11.dpitkin.choice3;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 /**
-   A GUI for ForeignVocabQuiz.
-   
-   @author Dane Pitkin
-   @version Mantis Ticket 0000341, CS56, S11, choice points 3
-   @see ForeignVocabQuiz
-*/
+ *    A GUI for ForeignVocabQuiz.
+ *       
+ *          @author Dane Pitkin
+ *             @version Mantis Ticket 0000341, CS56, S11, choice points 3
+ *                @see ForeignVocabQuiz
+ *                */
 
 
 public class ForeignVocabQuizGUI {
@@ -28,15 +26,15 @@ public class ForeignVocabQuizGUI {
     private int numOfGuesses;
 
     /**Constructor
-     */
+ *      */
     
     public ForeignVocabQuizGUI(){
 	quiz = new ForeignVocabQuiz();
     }
 
     /**Creates GUI and starts quiz.
-     *Uses inner class Listener as an action listener.
-     */
+ *      *Uses inner class Listener as an action listener.
+ *           */
 
     public void go(){
 	JFrame frame = new JFrame();

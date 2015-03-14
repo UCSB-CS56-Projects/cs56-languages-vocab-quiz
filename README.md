@@ -13,6 +13,7 @@ YES | mastergberry | TBD | A quiz that is designed to test the user's knowledge 
 ```
 ```
  W14 | bkiefer13 | TBD | A quiz that is designed to test the user's knowledge on foreign vocabulary
+ W15 | pichumy | TBD | A quiz that is designed to test the user's knowledge on foreign vocabulary
 ```
 
 ## Documentation

@@ -34,6 +34,14 @@ public class ForeignVocabQuiz{
 	setUpVocabList();
     }
 
+    public ForeignVocabQuiz(String filename){
+	vocabList = new ArrayList<ForeignVocabWord>();
+	file = new FileRead(filename);
+	file.getFileName();
+	file.readFromFile();
+	setUpVocabList();
+    }
+
     /** Sort the list of words from file from 
  *      *<code>ArrayList<String></code> into a list of 
  *           *Foreign Vocab Words of type <code>ArrayList<ForeignVocabWord></code>.

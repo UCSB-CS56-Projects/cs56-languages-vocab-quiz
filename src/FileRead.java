@@ -30,7 +30,12 @@ public class FileRead
  *      */
 
     public FileRead(){
-	this.filename = "/text/vocabulary.txt";
+	this.filename = "german.txt";
+	this.list = new ArrayList<String>();
+    }
+    
+    public FileRead(String inputfile){
+	this.filename = inputfile;
 	this.list = new ArrayList<String>();
     }
 
@@ -66,13 +71,13 @@ public class FileRead
 
     /** Reads data from file and stores it in <code>list</code>.
  *      *
- *           *Each line in the .txt file is one index of <code>list</code>.
- *                *If you want the list to be on word per index, you must only
- *                     *have one word per line.
- *                          *
- *                               *Code borrowed and modified from:
- *                                    *@link http://www.rgagnon.com/javadetails/java-0077.html
- *                                         *@exception Exception catch any exception reading from file
+ *      *Each line in the .txt file is one index of <code>list</code>.
+ *      *If you want the list to be on word per index, you must only
+ *      *have one word per line.
+ *      *
+ *      *Code borrowed and modified from:
+ *      *@link http://www.rgagnon.com/javadetails/java-0077.html
+ *      *@exception Exception catch any exception reading from file
  *                                              */
 
     public void readFromFile(){

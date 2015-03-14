@@ -10,7 +10,7 @@
   <property name="webRoot" value="${env.HOME}/public_html/cs56" />
   <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
 
-  <property name="mainClass" value="ForeignVocabQuizGUI" />
+  <property name="mainClass" value="menu" />
   
   <property name="projectName" value="cs56-languages-vocab-quiz" /> 
   <property name="javadocDest" value="${webRoot}/${projectName}/javadoc" /> 
@@ -29,7 +29,7 @@
 		<pathelement location="build"/>
 	</path>
   
-  <target name="run" depends = "compile" description="run the ForeignVocabQuizGUI program">
+  <target name="run" depends = "compile" description="run the menu program">
     <java classname="${mainClass}" classpath="build" fork="true" />
   </target>
 

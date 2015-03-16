@@ -1,10 +1,15 @@
 # cs56-languages-vocab-quiz
 
-W14 ready! (Brynn Kiefer)
+W15 Changes (Dan Luo)
 
-This is a foreign language quiz that currently tests German vocabulary. It is abstracted in such a way so that it could be adapted to other languages, but currently it only tests German -> English and English -> German.
-
+In a previous iteration this game would work for a hard coded german text file copy.
 ![](http://i.imgur.com/mTfTOD6.png)
+
+In W15 I attempted to fix the file read-in error occurring with ant run, and finding a way to choose languages, and not having a single hard coded file to read from. 
+
+At the moment the game does not actually work anymore, but there is a new file called menu.java that serves essentially as a menu. To add new languages/things to the menu, add another button for what you wish to add, and add something to perform in the action listener. For an input file to be successfully read in, the file has to be placed in to the build directory. 
+
+The menu and the game work separately, but not together. If one wishes to test the game, simply uncomment the code in ForeignVocabQuizGUI.java and call the constructor for it, then call .go() in the main function. I uncommented that portion of the code, as it does not run properly when called from menu. There appears to be issues with how the previous person attempted to implement the Action Listener that for some reason works when called directly from main. 
 
 project history
 ===============

@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.W16.yvalencia.foreignvocabquiz;
+package edu.ucsb.cs56.projects.languages.vocab_quiz;
 
 
 import java.awt.*;
@@ -32,6 +32,7 @@ public class ForeignVocabQuizGUI {
     private String userGuess;
     private String randomWord; 
     private String counterPart;
+    private String myLanguage;
     
     private int numOfGuesses = 0 ;
     private int totalQuestions = 1; 
@@ -114,6 +115,7 @@ public class ForeignVocabQuizGUI {
 	yourGuess = new JLabel();
 	yourResult = new JLabel();
 	JLabel quizWord = new JLabel("The word is: ");
+	JLabel quizLanguage = new JLabel("Current language being tested on: ");
 	JLabel yourCorrectScore = new JLabel("Questions correct: " + questionsCorrect);
 	JLabel yourIncorrectScore = new JLabel("Questions incorrect: " + questionsIncorrect);
 	
@@ -126,7 +128,8 @@ public class ForeignVocabQuizGUI {
 	centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 	southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
 	eastPanel.setLayout(new BoxLayout(eastPanel, BoxLayout.Y_AXIS)); 
-	
+
+	northPanel.add(quizLanguage);
 	northPanel.add(quizWord);
 	northPanel.add(textField);
 	northPanel.add(answerButton);
@@ -167,7 +170,9 @@ public class ForeignVocabQuizGUI {
 	    
 	    randomWord = quiz.getRandomWordFromList();
 	    counterPart = quiz.getCounterPart();
-	    
+	    myLanguage = quiz.getLanguage();
+
+	    quizLanguage.setText("Your language is: " + myLanguage);
 	    quizWord.setText("Your word is: " + randomWord);
 	    
 	    
@@ -177,12 +182,15 @@ public class ForeignVocabQuizGUI {
 	    while(quiz.checkUserGuess(userGuess) == false){
 		if(numOfGuesses == 3) {
 		    questionsIncorrect++;
+		    /* mine */   //yourIncorrectScore.setText("Your incorrect score is " +  questionsIncorrect + "/" + totalQuestions + ".");	    
 		    break;
 		}
 	    }
 	    
-	    if(quiz.checkUserGuess(userGuess) == true) 
+	    if(quiz.checkUserGuess(userGuess) == true){ 
 		questionsCorrect++;
+		/* my */	//yourCorrectScore.setText("Your correct score is " + questionsCorrect + "/" + totalQuestions + ".");
+	    }
 	    
 	    numOfGuesses = 0;
 	    //randomWord = quiz.getRandomWordFromList();
@@ -213,6 +221,7 @@ public class ForeignVocabQuizGUI {
 	    //if(numOfGuesses < 3){
 	    if(quiz.checkUserGuess(userGuess))
 		yourResult.setText("Correct!");
+
 	    else {
 		if(numOfGuesses == 2)
 		    yourResult.setText("The correct answer was: " + counterPart);

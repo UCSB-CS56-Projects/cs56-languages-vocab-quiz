@@ -28,6 +28,7 @@ public class ForeignVocabQuizGUI {
     private JLabel quizWord;
     private JLabel yourCorrectScore;
     private JLabel yourIncorrectScore;
+    private JLabel yourGuessCount;
     
     private String userGuess;
     private String randomWord; 
@@ -40,7 +41,12 @@ public class ForeignVocabQuizGUI {
     private int numOfGuesses = 0;
     private int totalQuestions = 0; 
     private int questionsCorrect = 0;
-    private int questionsIncorrect = 0; 
+    private int questionsIncorrect = 0;
+    //CHANGES CHANGES CHANGES
+    private int guessesAllowed = 3;
+    private JButton hardButton;
+    private JButton hintButton;
+    private JButton skipButton;
 
     
     // for the GUI
@@ -117,17 +123,23 @@ public class ForeignVocabQuizGUI {
 	scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 	scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	
+	//CHANGES CHANGES CHANGES CHANGES CHANGES
+	JButton easyButton = new JButton("Easy");
+	JButton mediumButton = new JButton("Medium");
+	hardButton = new JButton("Hard");
 	
 	JButton answerButton = new JButton("Answer!");
-	JButton hintButton = new JButton("Hint!");
-	JButton skipButton = new JButton("Skip!");
+	hintButton = new JButton("Hint!");
+	skipButton = new JButton("Skip!");
 	
 	yourGuess = new JLabel();
 	yourResult = new JLabel();
-	quizWord = new JLabel("The word is: "); //
+	quizWord = new JLabel("The word is: "); 
 	JLabel quizLanguage = new JLabel("Current language being tested on: ");
 	yourCorrectScore = new JLabel("Questions correct: " + questionsCorrect);
 	yourIncorrectScore = new JLabel("Questions incorrect: " + questionsIncorrect);
+	//CHANGES CHANGES CHANGES CHANGES CHANGES
+	yourGuessCount = new JLabel("Number of Guesses: " + numOfGuesses + "/" + guessesAllowed);
 	
 	JPanel northPanel = new JPanel();
 	JPanel centerPanel = new JPanel();
@@ -147,15 +159,25 @@ public class ForeignVocabQuizGUI {
 	centerPanel.add(yourGuess);
 	centerPanel.add(yourResult);
 	centerPanel.add(yourCorrectScore);
-	centerPanel.add(yourIncorrectScore); 
+	centerPanel.add(yourIncorrectScore);
+	centerPanel.add(yourGuessCount);
 	
 	eastPanel.add(hintButton);
 	eastPanel.add(skipButton);
+	//CHANGES CHANGES CHANGES CHANGES CHANGES
+	eastPanel.add(easyButton);
+	eastPanel.add(mediumButton);
+	eastPanel.add(hardButton);
 	
 	southPanel.add(scroller);
 	
 	
         textField.requestFocus();
+
+	//CHANGES CHANGES CHANGES CHANGES CHANGES
+	easyButton.addActionListener(new easyListener());
+	mediumButton.addActionListener(new mediumListener());
+	hardButton.addActionListener(new hardListener());
 	
 	textField.addActionListener(new Listener());
 	answerButton.addActionListener(new Listener());
@@ -175,7 +197,7 @@ public class ForeignVocabQuizGUI {
 	
 	while(quiz.listNotEmpty()) {    
 	    
-	    numOfGuesses = 1;
+	    numOfGuesses = 0;
 	    
 	    randomWord = quiz.getRandomWordFromList();
 	    counterPart = quiz.getCounterPart();
@@ -232,21 +254,23 @@ public class ForeignVocabQuizGUI {
 	public void actionPerformed(ActionEvent event) {
 	    userGuess = textField.getText(); 
 	    yourGuess.setText("You guessed: " + userGuess + ".");
+	    numOfGuesses++;
 	    
 	    if(quiz.checkUserGuess(userGuess)){
 		newRandomWord = quiz.getRandomWordFromList();
-		newCounterPart = quiz.getCounterPart(); 
+		newCounterPart = quiz.getCounterPart();
 		quizWord.setText("Your word is: " + newRandomWord);
 		textField.setText("");
 		yourResult.setText("Correct!");
 		questionsCorrect++;
 		totalQuestions++;
-		numOfGuesses = 1;
+		numOfGuesses = 0;
+		yourGuessCount.setText("Number of Guesses: " + numOfGuesses + "/" + guessesAllowed);
 	    }
 
 	    else {
 		newCounterPart = quiz.getCounterPart();
-		if(numOfGuesses == 3){
+		if(numOfGuesses == guessesAllowed){
 		    textField.setText("");
 		    yourResult.setText("The correct answer was: " + newCounterPart);
 		    newRandomWord = quiz.getRandomWordFromList();
@@ -256,10 +280,12 @@ public class ForeignVocabQuizGUI {
 		    questionsIncorrect++;
 		    totalQuestions++;
 		    numOfGuesses = 0;
+		    yourGuessCount.setText("Number of Guesses: " + numOfGuesses + "/" + guessesAllowed);
 		}
 		else
 		    yourResult.setText("Incorrect! Try again");
-		numOfGuesses++;
+		yourGuessCount.setText("Number of Guesses: " + numOfGuesses + "/" + guessesAllowed);
+		
 	    }
   
 
@@ -279,6 +305,58 @@ public class ForeignVocabQuizGUI {
 	numOfGuesses = 0;
     }
 
+    //CHANGES CHANGES CHANGES CHANGES CHANGES
+    class easyListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guessesAllowed = 5;
+	    getWord();
+	    totalQuestions = 0;
+	    quizWord.setText("Your word is: " + randomWord);
+	    textField.setText("");
+	    questionsCorrect = 0;
+	    questionsIncorrect = 0;
+	    yourGuessCount.setText("Number of Guesses: " + numOfGuesses + "/" + guessesAllowed);
+	    yourCorrectScore.setText("Your correct score is " + questionsCorrect + "/" + totalQuestions + ".");
+	    yourIncorrectScore.setText("Your incorrect score is " +  questionsIncorrect + "/" + totalQuestions + ".");
+	    hintButton.setVisible(true);
+	    skipButton.setVisible(true);
+	}
+    }
+
+    class mediumListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guessesAllowed = 3;
+	    getWord();
+	    totalQuestions = 0;
+	    quizWord.setText("Your word is: " + randomWord);
+	    textField.setText("");
+	    questionsCorrect = 0;
+	    questionsIncorrect = 0;
+	    yourGuessCount.setText("Number of Guesses: " + numOfGuesses + "/" + guessesAllowed);
+	    yourCorrectScore.setText("Your correct score is " + questionsCorrect + "/" + totalQuestions + ".");
+	    yourIncorrectScore.setText("Your incorrect score is " +  questionsIncorrect + "/" + totalQuestions + ".");
+	    hintButton.setVisible(true);
+	    skipButton.setVisible(true);
+	}
+    }
+
+    class hardListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guessesAllowed = 2;
+	    getWord();
+	    totalQuestions = 0;
+	    quizWord.setText("Your word is: " + randomWord);
+	    textField.setText("");
+	    questionsCorrect = 0;
+	    questionsIncorrect = 0;
+	    yourGuessCount.setText("Number of Guesses: " + numOfGuesses + "/" + guessesAllowed);
+	    yourCorrectScore.setText("Your correct score is " + questionsCorrect + "/" + totalQuestions + ".");
+	    yourIncorrectScore.setText("Your incorrect score is " +  questionsIncorrect + "/" + totalQuestions + ".");
+	    hintButton.setVisible(false);
+	    skipButton.setVisible(false);
+	}
+    }
+    
     /** Class that sets up the event in which the skip button is clicked; gets another random word from list of foreign words
      */
     class skipListener implements ActionListener {
@@ -297,6 +375,12 @@ public class ForeignVocabQuizGUI {
 	    JOptionPane.showMessageDialog(frame, "Your word is " + newCounterPart.length() + " letters long!" , "Here is your hint!" , JOptionPane.INFORMATION_MESSAGE);
 	}
     }
+
+    
+    /*class instructionListener implemenets ActionListener {
+      public void actionPerformed(ActionEvent event) {
+      JOptionPane.showMessageDialog(frame, "You have been given a vocabulary word respective to the language you chose or it's English translation. Your task is to type in the correct translation and select 'Answer!' to verify if your submission was correct. You have the ability to use the 'skip' or 'hint' buttons to help you if the word is too difficult! After three incorrect attempts, you will receive a new word and 0 points for that previous term.", JOptionPane.INFORMATION_MESSAGE);
+      } */
     
     /*class instructionListener implemenets ActionListener {
       public void actionPerformed(ActionEvent event) {

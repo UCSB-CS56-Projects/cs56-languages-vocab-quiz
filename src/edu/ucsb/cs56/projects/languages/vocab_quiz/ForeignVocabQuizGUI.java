@@ -197,7 +197,7 @@ public class ForeignVocabQuizGUI {
 	
 	while(quiz.listNotEmpty()) {    
 	    
-	    numOfGuesses = 0;
+	    numOfGuesses = 1;
 	    
 	    randomWord = quiz.getRandomWordFromList();
 	    counterPart = quiz.getCounterPart();

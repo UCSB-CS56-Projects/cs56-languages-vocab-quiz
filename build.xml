@@ -115,20 +115,6 @@
 
   </target>
  
-  
-  <target name="jws" depends="compile,jar" description="publish java web start">
-    <delete dir="${webRoot}/${projectPath}/jws"/>
-    <mkdir dir="${webRoot}/${projectPath}/jws"/>
-    <copy todir="${jwsDest}" file="dist/${projectName}.jar"/>
-    <copy todir="${jwsDest}">
-      <fileset dir="jws" includes="*.html"/>
-      <fileset dir="jws" includes="*.jnlp"/>
-      <fileset dir="jws" includes="*.png"/>
-      <fileset dir="jws" includes=".htaccess"/>
-    </copy>
-    <chmod dir="/cs/student/${env.USER}/public_html" perm="755" type="both" includes="**/*" />
-    <echo>Java web start at ${jwsURL}</echo>
-  </target>
 
 
 </project>

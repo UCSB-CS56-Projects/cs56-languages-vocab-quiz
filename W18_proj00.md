@@ -19,7 +19,7 @@ F. This project is based on Ant. The targets are fairly self explanatory, althou
 
 G. There are enough issues to earn 100 points, and the issues and fairly clear in terms of expectations.
 
-H.
+H. [issues](https://github.com/ucsb-cs56-projects/cs56-languages-vocab-quiz/issues)
 
 I. The code is organized into multiple .java files, with many subdirectories. The purposes of the classes and methods are fairly clear, but more comments would bee easier to work with. The code is a bit cluttered and could use some organizing and proper spacing. For another fellow programmer, we would decribe this project as one that reads txt files of multiple languages and takes user input from a created GUI while comparing it to the created answer. There are also various buttons on the UI that need to be fixed and worked on, as well as the overall display.
 
